@@ -5,10 +5,8 @@ env:
 
 window:
   padding:
-    x: 10
-    y: 10
-
-  dynamic_padding: true
+    x: 0
+    y: 0
 
 font:
   normal:
@@ -26,87 +24,7 @@ font:
   size: 12
   offset:
     x: 0
-    y: 5
-
-  
-# --| Frenzy's Alacritty |-- #
-
-# Using Aquarium
-
-# LIGHT - DARK
-#BG - #57718B or #C6D9DF
-# Implementation of Colors
-schemes:
-  aquarium_dark: &dark
-    primary:
-      background:        &aquarium_bg '#20202A'
-      foreground:        '#63718B'
-      bright_foreground: '#a0a8b6'
-      dim_foreground:    '#4c5664'
-
-    cursor:
-      cursor: '#b8dceb'
-      text: '#20202a'
-
-    vi_mode_cursor:
-      cursor: '#E8CCA7'
-
-    bright:
-      black:   '#3b3b4d'
-      red:     '#cc9b9d'
-      green:   '#a3ccad'
-      yellow:  '#d1ba97'
-      blue:    '#B8C9EA'
-      magenta: '#c497b3'
-      cyan:    '#95C2D1'
-      white:   '#63718B'
-
-    normal:
-      black:   '#44495E'
-      red:     '#ebb9b9'
-      green:   '#caf6bb'
-      yellow:  '#ebe3b9'
-      blue:    '#cddbf9'
-      magenta: '#f6bbe7'
-      cyan:    '#b8dceb'
-      white:   '#C6D0E9'
-
-  aquarium_light: &light
-    primary:
-      background:        &aquarium_bg '#E6E6F1'
-      foreground:        '#708190'
-      bright_foreground: '#9CA6B9'
-      dim_foreground:    '#7F8E9D'
-
-    cursor:
-      cursor: '#829FB0'
-
-    vi_mode_cursor:
-      cursor: '#6A8CBC'
-
-    bright:
-      black:   '#414560'
-      red:     '#B7435E'
-      green:   '#7e8f80'
-      yellow:  '#D88B72'
-      blue:    '#6E7EBF'
-      magenta: '#7170C2'
-      cyan:    '#728A9A'
-      white:   '#CCCBD9'
-
-    normal:
-      black:   '#313449'
-      red:     '#C34864'
-      green:   '#7D9685'
-      yellow:  '#DE956F'
-      blue:    '#6A8CBC'
-      magenta: '#8787BF'
-      cyan:    '#829FB0'
-      white:   '#D5D4E0'
-
-# Change to dark
-colors:
-  *dark
+    y: 3
 
 scrolling:
   history: 10000
@@ -114,5 +32,37 @@ scrolling:
   faux_multiplier: 100
   auto_scroll: true
 
-dynamic_title: false
-dynamic_padding: false
+colors:
+  # Default colors
+  primary:
+    background: '0x1d2021'
+    foreground: '0xd5c4a1'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x1d2021'
+    cursor: '0xd5c4a1'
+
+  # Normal colors
+  normal:
+    black:   '0x1d2021'
+    red:     '0xfb4934'
+    green:   '0xb8bb26'
+    yellow:  '0xfabd2f'
+    blue:    '0x83a598'
+    magenta: '0xd3869b'
+    cyan:    '0x8ec07c'
+    white:   '0xd5c4a1'
+
+  # Bright colors
+  bright:
+    black:   '0x665c54'
+    red:     '0xfe8019'
+    green:   '0x3c3836'
+    yellow:  '0x504945'
+    blue:    '0xbdae93'
+    magenta: '0xebdbb2'
+    cyan:    '0xd65d0e'
+    white:   '0xfbf1c7'
+
+draw_bold_text_with_bright_colors: false 

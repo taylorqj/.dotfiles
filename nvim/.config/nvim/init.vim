@@ -1,17 +1,21 @@
-set nocompatible
-filetype off
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
 
 call plug#begin("~/.config/nvim/plugged")
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 Plug 'dense-analysis/ale'
 Plug 'numirias/semshi'
 Plug 'mileszs/ack.vim'
-Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'chun-yang/auto-pairs'
@@ -23,12 +27,16 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'simrat39/symbols-outline.nvim'
+Plug 'nvim-lua/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'frenzyexists/aquarium-vim', { 'branch': 'develop' }
-
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 syntax on
-colorscheme aquarium 
+colorscheme gruvbox 
 
 set softtabstop=2
 set shiftwidth=2
@@ -42,9 +50,27 @@ set number
 set laststatus=2
 set visualbell " no sounds
 set clipboard=unnamed
-set wildignore+=*/node_modules/**
 set noswapfile
 set updatetime=200
+
+" Lualine
+lua << END
+require('lualine').setup {
+  options = {
+    theme = "gruvbox"
+  }
+}
+END
+
+" Treesitter
+lua << END
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",     
+  highlight = {
+    enable = true              
+  },
+}
+END
 
 " LSP
 lua << EOF
@@ -173,16 +199,11 @@ let g:indentLine_enabled = 1
 " JS JSX Files
 let g:jsx_ext_required = 0
 
-" CtrlP
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'rw'
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|build)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+" Telescope
+nnoremap ff <cmd>Telescope find_files<cr>
+nnoremap fg <cmd>Telescope live_grep<cr>
+nnoremap fb <cmd>Telescope buffers<cr>
+nnoremap fh <cmd>Telescope help_tags<cr>
 
 " Ale
 " Check Python files with flake8 and pylint.
@@ -229,8 +250,4 @@ nnoremap \ <cmd>NERDTreeToggle<cr>
 
 " Symbols Outline
 nnoremap <c-\> <cmd>SymbolsOutline<cr>
-
-" Find files using Telescope command-line sugar.
-map ff <c-p>
-inoremap jj <Esc>
 nnoremap <Leader>l :set hlsearch! hlsearch?<CR>
