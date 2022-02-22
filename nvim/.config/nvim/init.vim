@@ -13,7 +13,6 @@ call plug#begin()
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 Plug 'dense-analysis/ale'
 Plug 'numirias/semshi'
@@ -31,10 +30,11 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'nvim-lua/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'frenzyexists/aquarium-vim', { 'branch': 'develop' }
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
 let mapleader = ','
