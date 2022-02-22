@@ -4,9 +4,10 @@ env:
   WINIT_X11_SCALE_FACTOR: '1.0'
 
 window:
+  opacity: 0.9
   padding:
-    x: 0
-    y: 0
+    x: 5
+    y: 5
 
 font:
   normal:
@@ -21,10 +22,10 @@ font:
   bold_italic:
     family: Hack
     style: Bold Italic
-  size: 12
+  size: 14
   offset:
     x: 0
-    y: 3
+    y: 6
 
 scrolling:
   history: 10000
@@ -32,37 +33,44 @@ scrolling:
   faux_multiplier: 100
   auto_scroll: true
 
+draw_bold_text_with_bright_colors: true
+
+# Colors
 colors:
   # Default colors
   primary:
-    background: '0x1d2021'
-    foreground: '0xd5c4a1'
+    background:        '#011627'
+    foreground:        '#acb4c2'
+    bright_foreground: '#eeeeee'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
+  # Cursor colors
   cursor:
-    text: '0x1d2021'
-    cursor: '0xd5c4a1'
+    text:   '#080808'
+    cursor: '#9ca1aa'
+
+  # Selection colors
+  selection:
+    text:       '#080808'
+    background: '#b2ceee'
 
   # Normal colors
   normal:
-    black:   '0x1d2021'
-    red:     '0xfb4934'
-    green:   '0xb8bb26'
-    yellow:  '0xfabd2f'
-    blue:    '0x83a598'
-    magenta: '0xd3869b'
-    cyan:    '0x8ec07c'
-    white:   '0xd5c4a1'
+    black:   '#1d3b53'
+    red:     '#fc514e'
+    green:   '#a1cd5e'
+    yellow:  '#e3d18a'
+    blue:    '#82aaff'
+    magenta: '#c792ea'
+    cyan:    '#7fdbca'
+    white:   '#a1aab8'
 
   # Bright colors
   bright:
-    black:   '0x665c54'
-    red:     '0xfe8019'
-    green:   '0x3c3836'
-    yellow:  '0x504945'
-    blue:    '0xbdae93'
-    magenta: '0xebdbb2'
-    cyan:    '0xd65d0e'
-    white:   '0xfbf1c7'
-
-draw_bold_text_with_bright_colors: false 
+    black:   '#7c8f8f'
+    red:     '#ff5874'
+    green:   '#21c7a8'
+    yellow:  '#ecc48d'
+    blue:    '#82aaff'
+    magenta: '#ae81ff'
+    cyan:    '#7fdbca'
+    white:   '#d6deeb'
