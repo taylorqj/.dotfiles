@@ -29,12 +29,14 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'nvim-lua/telescope.nvim'
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'theprimeagen/harpoon'
 call plug#end()
 
 let mapleader = ','
@@ -45,4 +47,4 @@ let g:jsx_ext_required = 0
 let g:python3_host_prog='/usr/bin/python3'
 
 nnoremap <c-\> <cmd>SymbolsOutline<cr>
-nnoremap <Leader>l :set hlsearch! hlsearch?<CR>
+nnoremap <leader>l :set hlsearch! hlsearch?<CR>
