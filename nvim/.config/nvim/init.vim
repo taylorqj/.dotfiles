@@ -10,7 +10,6 @@ set wildignore+=**/.git/*
 " sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 call plug#begin()
-Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'pangloss/vim-javascript'
@@ -24,6 +23,7 @@ Plug 'yggdroot/indentline'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
@@ -37,9 +37,10 @@ Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'theprimeagen/harpoon'
+Plug 'xojs/vim-xo'
 call plug#end()
 
-let mapleader = ','
+let mapleader = ' '
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indentLine_enabled = 1
@@ -48,3 +49,13 @@ let g:python3_host_prog='/usr/bin/python3'
 
 nnoremap <c-\> <cmd>SymbolsOutline<cr>
 nnoremap <leader>l :set hlsearch! hlsearch?<CR>
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <Leader>rp :resize 100<CR>
+
+xnoremap <leader>p "_dP
+
+nnoremap Y yg$
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
