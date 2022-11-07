@@ -33,9 +33,11 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'projekt0n/github-nvim-theme'
 Plug 'theprimeagen/harpoon'
 Plug 'xojs/vim-xo'
 call plug#end()
@@ -59,3 +61,9 @@ nnoremap Y yg$
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
+
+set relativenumber
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
