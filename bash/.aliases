@@ -1,22 +1,7 @@
 alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
-alias air='~/bin/air'
-
 alias gsu="git submodule update --init --recursive"
-
-# Easier navigation: .., ..., ...., ....., ~ and -
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
-alias buyers="cd ~/dev/tackle/tackle-buyers-portal"
-alias upstream="cd ~/dev/tackle/tackle-upstream-api"
-alias ut="sh ~/dev/tackle/get_auth0_token.sh"
-alias mtmt="sh ~/dev/tackle/get_mtm_token.sh"
-
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # Detect which `ls` flavor is in use
