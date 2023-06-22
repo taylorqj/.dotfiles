@@ -40,6 +40,10 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'projekt0n/github-nvim-theme'
 Plug 'theprimeagen/harpoon'
 Plug 'xojs/vim-xo'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'MunifTanjim/prettier.nvim'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'folke/trouble.nvim'
 call plug#end()
 
 let mapleader = ' '
@@ -62,7 +66,13 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
 
-set relativenumber
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+
 set foldmethod=indent   
 set foldnestmax=10
 set nofoldenable

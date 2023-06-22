@@ -3,6 +3,8 @@ alias vim='nvim'
 alias vi='nvim'
 alias gsu="git submodule update --init --recursive"
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+alias abby='cd ~/dev/abbycare/'
+alias dotfiles='cd ~/.dotfiles/'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

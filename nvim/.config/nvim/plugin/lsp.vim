@@ -3,6 +3,7 @@ require'lspconfig'.pyright.setup{}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.sqlls.setup{}
 require'lspconfig'.bashls.setup{}
+require'lspconfig'.ruff_lsp.setup{}
 
 local lspconfig = require('lspconfig')
 
@@ -54,7 +55,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'gopls', 'tsserver' }
+local servers = { 'gopls', 'tsserver', 'eslint', 'ruff_lsp' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -63,6 +64,20 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+local python_root_files = {
+  'pyrightconfig.json',
+  'pyproject.toml',
+  'requirements.txt',
+}
+
+require'lspconfig'.pyright.setup {
+  on_attach = on_attach,
+  root_dir = require'lspconfig'.util.root_pattern(unpack(python_root_files)),
+  flags = {
+    debounce_text_changes = 200,
+  }
+}
 
 -- luasnip setup
 local luasnip = require 'luasnip'
@@ -110,4 +125,61 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- null-ls setup
+local null_ls = require("null-ls")
+
+local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+local event = "BufWritePre" -- or "BufWritePost"
+local async = event == "BufWritePost"
+
+null_ls.setup({
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.keymap.set("n", "<Leader>f", function()
+        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+      end, { buffer = bufnr, desc = "[lsp] format" })
+
+      -- format on save
+      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+      vim.api.nvim_create_autocmd(event, {
+        buffer = bufnr,
+        group = group,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr, async = async })
+        end,
+        desc = "[lsp] format on save",
+      })
+    end
+
+    if client.supports_method("textDocument/rangeFormatting") then
+      vim.keymap.set("x", "<Leader>f", function()
+        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+      end, { buffer = bufnr, desc = "[lsp] format" })
+    end
+  end,
+})
+
+-- prettier setup
+local prettier = require("prettier")
+
+prettier.setup({
+  bin = 'prettierd', -- or `'prettierd'` (v0.23.3+)
+  filetypes = {
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+  },
+})
+
 EOF
+
